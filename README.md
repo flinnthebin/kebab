@@ -15,9 +15,9 @@
 
 ## Implementation Plan
 
-![File Backup Plan](T1A3/backup.png)
-![File Analysis Plan](T1A3/analysis.png)
-![File Renaming Plan](T1A3/rename.png)
+![File Backup Plan](https://github.com/flinnthebin/T1A3/blob/main/backup.png)
+![File Analysis Plan](https://github.com/flinnthebin/T1A3/blob/main/analysis.png)
+![File Renaming Plan](https://github.com/flinnthebin/T1A3/blob/main/rename.png)
 
 ## Installation/Troubleshooting
 

@@ -12,6 +12,7 @@
 import sys
 import os
 import subprocess
+import shutil
 
 def usage():
   if len(sys.argv) < 2:
@@ -19,14 +20,15 @@ def usage():
     usage: kebab <directory>""")
     sys.exit(1)
 
-def create_backup():
-  # create a backup
-  return
+def create_backup(directory):
+    backup_name = f"{directory}_backup.tar.gz"
+    shutil.make_archive(backup_name[:-7], 'gztar', directory)
+    return backup_name
 
 def analyze_file(file_path):
-    file_type = subprocess.getoutput(f"file -b --mime-type {file_path}")
-    word_count = subprocess.getoutput(f"wc -w {file_path}")
-    return {"file_type": file_type, "word_count": word_count.strip().split()[0]}
+  file_type = subprocess.getoutput(f"file -b --mime-type {file_path}")
+  word_count = subprocess.getoutput(f"wc -w {file_path}")
+  return {"file_type": file_type, "word_count": word_count.strip().split()[0]}
 
 def print_analysis_report():
   # collate file analysis, print dict to terminal
@@ -41,9 +43,6 @@ def rename_all():
   return
 
 if __name__ == "__main__":
-    usage()
-    directory_name = sys.argv[1]
-    filename = sys.argv[2]
-    file_path = os.path.join(directory_name, filename)
-    file_analysis = analyze_file(file_path)
-    print(file_analysis)
+  usage()
+  directory_name = sys.argv[1]
+  create_backup(directory_name)

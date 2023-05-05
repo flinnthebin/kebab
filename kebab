@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+
+# kebab - remaps directories and files to use kebab-case naming convention. 
+# the kebab-case format was selected as it is not commonly associated with programming languages, making it a convenient choice for organizing a linux filesystem
+# the purpose of the script is to simplify and standardize navigation within the filesystem.
+
+def usage():
+  if len(sys.argv) < 2:
+    print("""lowercase - a tool to remap directories and files to kebab case.
+    usage: lowercase <directory>""")
+    sys.exit(1)
+
+if __name__ == "__main__":
+  usage()

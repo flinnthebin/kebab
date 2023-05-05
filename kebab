@@ -3,12 +3,35 @@
 # kebab - remaps directories and files to use kebab-case naming convention. 
 # the kebab-case format was selected as it is not commonly associated with programming languages, making it a convenient choice for organizing a linux filesystem
 # the purpose of the script is to simplify and standardize navigation within the filesystem.
+# feature 1 - create a backup of the original directory tree in case of user error
+# feature 2 - print file information for the items that have been reorganized
+# feature 3 - rename a directory tree to kebab case
+
+# use case: standardization of repositories cloned from github to keep navigation across a system uniform.
+
+import sys
 
 def usage():
   if len(sys.argv) < 2:
-    print("""lowercase - a tool to remap directories and files to kebab case.
-    usage: lowercase <directory>""")
+    print("""kebab - a tool to remap directories and files to kebab case.
+    usage: kebab <directory>""")
     sys.exit(1)
+
+def create_backup():
+  # create a backup
+  return
+
+def file_analysis():
+  # analyze files that have been modified
+  return
+
+def rename():
+  # rename a file
+  return
+
+def rename_all():
+  # rename a series of folders/files with repeat calls to rename
+  return
 
 if __name__ == "__main__":
   usage()

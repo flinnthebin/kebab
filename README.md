@@ -15,7 +15,9 @@
 
 ## Implementation Plan
 
-- Taiga
+![File Backup Plan](T1A3/backup.png)
+![File Analysis Plan](T1A3/analysis.png)
+![File Renaming Plan](T1A3/rename.png)
 
 ## Installation/Troubleshooting
 

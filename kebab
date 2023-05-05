@@ -34,9 +34,11 @@ def print_analysis_report():
   # collate file analysis, print dict to terminal
   return
 
-def rename():
-  # rename a file
-  return
+def rename(current_name, new_name):
+  try:
+    os.rename(current_name, new_name)
+  except PermissionError as e:
+    print("Permission Error: ", e)  
 
 def rename_all():
   # rename a series of folders/files with repeat calls to rename
@@ -44,5 +46,6 @@ def rename_all():
 
 if __name__ == "__main__":
   usage()
-  directory_name = sys.argv[1]
-  create_backup(directory_name)
+  test_file = sys.argv[1]
+  new_name = sys.argv[2]
+  rename(test_file, new_name)

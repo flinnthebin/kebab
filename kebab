@@ -25,6 +25,18 @@ def create_backup(directory):
     shutil.make_archive(backup_name[:-7], 'gztar', directory)
     return backup_name
 
+def confirmation(argv1, argv2):
+  confirm = input(f"Do you want to rename the following directory tree to kebab-case? [y/n]")
+  if confirm.lower() == "y":
+    backup_name = create_backup(argv1)
+    print(f"Backup created: {backup_name}")
+    try:
+      rename(argv1, argv2)
+    except:
+      print("Something went wrong while renaming the directory tree.")
+  else:
+    print("alright, alright, alright. be a lot cooler if you did.")
+
 def analyze_file(file_path):
   file_type = subprocess.getoutput(f"file -b --mime-type {file_path}")
   word_count = subprocess.getoutput(f"wc -w {file_path}")
@@ -46,6 +58,4 @@ def rename_all():
 
 if __name__ == "__main__":
   usage()
-  test_file = sys.argv[1]
-  new_name = sys.argv[2]
-  rename(test_file, new_name)
+  confirmation(sys.argv[1], sys.argv[2])

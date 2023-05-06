@@ -31,7 +31,7 @@ def confirmation(argv1, argv2):
     backup_name = create_backup(argv1)
     print(f"Backup created: {backup_name}")
     try:
-      rename(argv1, argv2)
+     rename_all(argv1) 
     except:
       print("Something went wrong while renaming the directory tree.")
   else:
@@ -52,10 +52,17 @@ def rename(current_name, new_name):
   except PermissionError as e:
     print("Permission Error: ", e)  
 
-def rename_all():
-  # rename a series of folders/files with repeat calls to rename
-  return
+def rename_all(directory, renamed={}):
+  try:
+    new_name = directory.strip().lower().replace(" ", "-").replace("_", "-")
+    if directory not in renamed:
+      rename(directory, new_name)
+      renamed[directory] = new_name
+    directory = new_name
+  except PermissionError as e:
+    print("Permission Error: ", e)
+    return
 
 if __name__ == "__main__":
   usage()
-  confirmation(sys.argv[1], sys.argv[2])
+  confirmation(sys.argv[1])

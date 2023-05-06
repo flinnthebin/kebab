@@ -37,9 +37,9 @@ def confirmation(argv1):
     maxdepth = int(input("Please enter the max depth to rename (integer): "))
     confirm = input(f"Do you want to rename the following directory tree to kebab-case? [y/n]")
     if confirm.lower() == "y":
-        backup_name = create_backup(argv1)
-        print(f"Backup created: {backup_name}")
         try:
+            backup_name = create_backup(argv1) 
+            print(f"Backup created: {backup_name}")
             analysis_results = {}
             rename_all(argv1, dirdepth=0, maxdepth=maxdepth, analysis_results=analysis_results)
             print_analysis_report(analysis_results)

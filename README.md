@@ -1,13 +1,13 @@
 # T1A3
 
-
 ## Source Control Repository
 
 [https://github.com/flinnthebin/T1A3](URL)
 
 ## Styling Conventions
 
-- TBA
+Styling for this code is conformant to the Google Python Style Guide:
+[https://google.github.io/styleguide/pyguide.html](URL)
 
 ## Features
 

@@ -106,5 +106,4 @@ def rename_all(directory, dirdepth=1, maxdepth=5, renamed={}, analysis_results={
 
 if __name__ == "__main__":
     usage()
-    argv1 = sys.argv[1]
-    confirmation(argv1)
+    confirmation(sys.argv[1])

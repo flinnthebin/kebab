@@ -18,7 +18,7 @@ import sys
 
 
 def usage():
-    """Prints script usage if not enough arguments are given."""
+    """Prints script usage if not enough arguments are provided."""
     if len(sys.argv) < 2:
         print("""lowercase - a tool to remap directories and files to kebab case.
 usage: lowercase <directory>""")
@@ -26,7 +26,7 @@ usage: lowercase <directory>""")
 
 
 def create_backup(directory):
-    """Creates a backup of the given directory."""
+    """Creates a backup of the specified directory."""
     backup_name = os.path.basename(directory) + "_backup.tar.gz"
     backup_path = os.path.join(os.getcwd(), backup_name)
     shutil.make_archive(backup_path[:-7], "gztar", directory)
@@ -34,7 +34,7 @@ def create_backup(directory):
 
 
 def confirmation(argv1):
-    """Asks for user confirmation and starts renaming process."""
+    """Prompt confirmation to prevent accidental execution."""
     maxdepth = int(input("Please enter the max depth to rename (integer): "))
     confirm = input(f"Do you want to rename the following directory tree to kebab-case? [y/n]")
     if confirm.lower() == "y":
@@ -45,13 +45,13 @@ def confirmation(argv1):
             rename_all(argv1, dirdepth=1, maxdepth=maxdepth, analysis_results=analysis_results)
             print_analysis_report(analysis_results)
         except:
-            print("Something went wrong while renaming the files.")
+            print("Something went wrong.")
     else:
-        print("would be a lot cooler if you did.")
+        print("Would be a lot cooler if you did.")
 
 
-def analyze_file(file_path):
-    """Analyzes file type and word count of the given file path."""
+def analyse_file(file_path):
+    """Analyses file type and word count of the given file path."""
     file_type = subprocess.getoutput(f"file -b --mime-type {file_path}")
     word_count = subprocess.getoutput(f"wc -w {file_path}")
     return {"file_type": file_type, "word_count": word_count.strip().split()[0]}
@@ -67,7 +67,7 @@ def print_analysis_report(analysis_results):
 
 
 def rename(current_name, new_name):
-    """Renames the given file/directory."""
+    """Renames the file/directory."""
     try:
         os.rename(current_name, new_name)
     except PermissionError as e:
@@ -75,7 +75,7 @@ def rename(current_name, new_name):
 
 
 def rename_all(directory, dirdepth=1, maxdepth=5, renamed={}, analysis_results={}):
-    """Recursively renames all files and directories in the given directory tree to kebab-case."""
+    """Recursively renames all files and directories to kebab-case."""
     try:
         new_name = directory.strip().lower().replace(" ", "-").replace("_", "-")
         if directory not in renamed:
@@ -102,7 +102,7 @@ def rename_all(directory, dirdepth=1, maxdepth=5, renamed={}, analysis_results={
             if old_name not in renamed:
                 rename(old_name, new_name)
                 renamed[old_name] = new_name
-                analysis_results[new_name] = analyze_file(new_name)
+                analysis_results[new_name] = analyse_file(new_name)
 
 if __name__ == "__main__":
     usage()

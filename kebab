@@ -27,9 +27,10 @@ usage: lowercase <directory>""")
 
 def create_backup(directory):
     """Creates a backup of the given directory."""
-    backup_name = f"{directory}_backup.tar.gz"
-    shutil.make_archive(backup_name[:-7], "gztar", directory)
-    return backup_name
+    backup_name = os.path.basename(directory) + "_backup.tar.gz"
+    backup_path = os.path.join(os.getcwd(), backup_name)
+    shutil.make_archive(backup_path[:-7], "gztar", directory)
+    return backup_path
 
 
 def confirmation(argv1):
@@ -41,7 +42,7 @@ def confirmation(argv1):
             backup_name = create_backup(argv1) 
             print(f"Backup created: {backup_name}")
             analysis_results = {}
-            rename_all(argv1, dirdepth=0, maxdepth=maxdepth, analysis_results=analysis_results)
+            rename_all(argv1, dirdepth=1, maxdepth=maxdepth, analysis_results=analysis_results)
             print_analysis_report(analysis_results)
         except:
             print("Something went wrong while renaming the files.")
@@ -73,7 +74,7 @@ def rename(current_name, new_name):
         print("Permission Error: ", e)
 
 
-def rename_all(directory, dirdepth=0, maxdepth=5, renamed={}, analysis_results={}):
+def rename_all(directory, dirdepth=1, maxdepth=5, renamed={}, analysis_results={}):
     """Recursively renames all files and directories in the given directory tree to kebab-case."""
     try:
         new_name = directory.strip().lower().replace(" ", "-").replace("_", "-")

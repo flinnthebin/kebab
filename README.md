@@ -1,13 +1,4 @@
-# T1A3
-
-## Source Control Repository
-
-[https://github.com/flinnthebin/T1A3](URL)
-
-## Styling Conventions
-
-Styling for this code is conformant to the Google Python Style Guide:
-[https://google.github.io/styleguide/pyguide.html](URL)
+# KEBAB
 
 ## Features
 
@@ -22,12 +13,6 @@ Features:
 3. Rename a directory tree to kebab-case.
 
 Use case: standardization of repositories cloned from GitHub to keep navigation across a system uniform.
-
-## Implementation Plan
-
-![File Backup Plan](https://github.com/flinnthebin/T1A3/blob/main/backup.png)
-![File Analysis Plan](https://github.com/flinnthebin/T1A3/blob/main/analysis.png)
-![File Renaming Plan](https://github.com/flinnthebin/T1A3/blob/main/rename.png)
 
 ## Installation/Troubleshooting
 
